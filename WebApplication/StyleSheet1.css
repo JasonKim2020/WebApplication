@@ -1,0 +1,165 @@
+﻿:root {
+    /* Color */
+    --white-color: #fff;
+    --black-color: #140a00;
+    --blue-color: #045fd4;
+    --red-color: #ff0000;
+    --header-text-color: white;
+    --grey-dark-color: #909090;
+    --grey-light-color: #e0e0e0;
+    --Primary: #d32f2f;
+    --P-light: #ff6659;
+    --P-dark: #9a0007;
+    --Secondary: #ffecb3;
+    --S-light: #ffffe5;
+    --S-dark: #cbba83;
+    /* Size */
+    --padding-large: 12px;
+    --padding-small: 6px;
+    /* Font size */
+    --font-xxxlarge: 2.5rem;
+    --font-xxlarge: 1.6rem;
+    --font-xlarge: 1.4rem;
+    --font-large: 1.2rem;
+    --font-medium: 1rem;
+    --font-small: 0.8rem;
+    --font-micro: 0.6rem;
+}
+
+
+
+.header {
+    background-color: var(--Primary);
+    color: var(--header-text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    font-size: var(--font-large);
+    padding: var(--padding-small);
+}
+
+i {
+    font-size: var(--font-xxxlarge);
+}
+
+.header img {
+    height: 100%;
+}
+
+.header_deliver i {
+    color: var(--header-text-color);
+}
+
+.header_search * {
+    font-size: var(--font-large);
+    border: none;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.header_signin {
+    font-size: var(--font-medium);
+}
+
+.linkSignOut {
+    color: var(--header-text-color);
+}
+
+.header_cart i {
+    color: var(--header-text-color);
+}
+
+
+
+[cc*="ButtonLabel"] {
+    background-color: white;
+}
+
+
+
+/* ******* footer******** */
+.footer ul {
+    list-style: none;
+}
+
+.footer {
+    background-color: var(--Primary);
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5px;
+    padding: 10px;
+    height: 40vh;
+    font-size: var(--font-large);
+}
+
+.footer_title {
+    font-size: var(--font-xxlarge);
+}
+
+.footer_ul li {
+    line-height: 2rem;
+}
+
+.footer_icons {
+    display: flex;
+}
+
+    .footer_icons * {
+        margin-right: 0.8rem;
+    }
+
+.footer_contactus {
+    width: 30vw;
+}
+
+li i:hover {
+    cursor: pointer;
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+}

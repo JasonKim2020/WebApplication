@@ -1,0 +1,190 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebApplication.Site1" %>
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <link rel="shortcut icon" href="images/logo_icon.png" />
+    <script
+        src="https://kit.fontawesome.com/c766963e32.js"
+        crossorigin="anonymous"></script>
+    <!--<link rel="stylesheet" href="index.css" />-->
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .header_signin a:visited {
+            color: white;
+        }
+
+        .header_signin a:link {
+            color: white;
+        }
+
+        .header_signin a {
+            font-size: var(--font-large);
+        }
+
+        /********** body_container *********/
+        .body_container {
+            display: flex;
+            flex-direction: row;
+        }
+
+
+        /********** Category *********/
+        .category {
+            width: 25vw;
+            display: flex;
+            flex-direction: row;
+            background-color: mintcream;
+        }
+
+        .category_ul {
+            list-style: none;
+            font-size: var(--font-large);
+            line-height: 1.8rem;
+        }
+
+            .category_ul li {
+                padding-left: var(--padding-small);
+                padding-right: var(--padding-small);
+            }
+
+                .category_ul li i {
+                    width: 40px;
+                    text-align: center;
+                    padding: var(--padding-small);
+                }
+
+                .category_ul li:hover {
+                    background-color: var(--S-light);
+                    border-radius: var(--padding-small);
+                    animation: shake 0.5s;
+                }
+
+                .category_ul li a {
+                    color: black;
+                }
+        /***************   Contact     ***********/
+        .contact {
+            color:white;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="StyleSheet1.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- header -->
+        <div class="header"> 
+            <asp:ImageButton ID="ImageButton1" Style="height: 100%;" runat="server" ImageUrl="images\logo_pink.png" OnClick="ImageButton1_Click" ValidationGroup="MasterDefault" />
+            &nbsp;<div class="header_deliver">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Sail to
+                    <br />
+                    New Zealand</span>
+            </div>
+            <div class="header_search">
+                <asp:DropDownList ID="category" name="category" runat="server" DataSourceID="SqlDataSource1" DataTextField="CodeDesc" DataValueField="Code"></asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbGoShopConnectionString %>" SelectCommand="SELECT [Code], [CodeDesc], [CodeOrder] FROM [tblCode] WHERE ([Sector] = @Sector) ORDER BY [CodeOrder]">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="10" Name="Sector" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                <asp:TextBox ID="txtSearch" name="Search" runat="server"></asp:TextBox><asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+                <!--  <i class="fas fa-search"></i> -->
+            </div>
+            <div class="header_signin">
+                <asp:LinkButton ID="lbtnUserName" runat="server" OnClick="lbtnUserName_Click" ValidationGroup="MasterSign">LinkButton</asp:LinkButton>
+                <br />
+                <asp:LinkButton ID="lbtnMenu" runat="server" OnClick="lbtnMenu_Click">My Account</asp:LinkButton>
+            </div>
+            <div class="header_return">
+                <asp:LinkButton ID="linkSignOut" runat="server" Style="color: var(--header-text-color);" OnClick="linkSignOut_Click" ValidationGroup="signout"> Sign Out</asp:LinkButton>
+            </div>
+            <div class="header_cart"><a href="CartShow.aspx" style="color: var(--header-text-color);"><i class="fas fa-shopping-cart"></i>Cart</a></div>
+        </div>
+        <div class="body_container">
+            <!-- body -->
+            <div class="category">
+                <ul class="category_ul">
+                    <li>
+                        <a href="default.aspx?Category=1"><i class="fas fa-house-user"></i>
+                            Home & Living</a>
+                    </li>
+                    <li><a href="default.aspx?Category=2"><i class="fas fa-laptop-code"></i>Electronics & Computers</a></li>
+                    <li><a href="default.aspx?Category=3"><i class="fas fa-running"></i>Sports & Outdoors</a></li>
+                    <li><a href="default.aspx?Category=4"><i class="fas fa-grin-hearts"></i>Beauty & Health</a></li>
+                    <li><a href="default.aspx?Category=5"><i class="fas fa-female"></i>Women</a></li>
+                    <li><a href="default.aspx?Category=6"><i class="fas fa-male"></i>Men</a></li>
+                    <li><a href="default.aspx?Category=7"><i class="fas fa-baby-carriage"></i>Kids & Baby</a></li>
+                    <li><a href="default.aspx?Category=8"><i class="fas fa-utensils"></i>Food, Wine & Beer</a></li>
+                    <li><a href="default.aspx?Category=9"><i class="fas fa-gamepad"></i>Toys & Games</a></li>
+                    <li><a href="default.aspx?Category=10"><i class="fas fa-dog"></i>DIY, Garden & Pet</a></li>
+                    <li><a href="default.aspx?Category=11"><i class="fas fa-file-video"></i>Books, Music & Movies</a></li>
+                    <li><a href="default.aspx?Category=12"><i class="fas fa-mail-bulk"></i>Stationery & Office</a></li>
+                    <li><a href="default.aspx?Category=13"><i class="fas fa-gifts"></i>Gifting</a></li>
+                </ul>
+            </div>
+            <!-- Category End-->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="footer_followus">
+                <span class="footer_title">Follow us on</span>
+                <ul class="footer_icons">
+                    <li><i class="fab fa-twitter"></i></li>
+                    <li><i class="fab fa-facebook-f"></i></li>
+                    <li><i class="fab fa-instagram"></i></li>
+                    <li><i class="fab fa-pinterest"></i></li>
+                </ul>
+            </div>
+            <div class="footer_MyAccount">
+                <span class="footer_title">Account</span>
+                <ul class="footer_ul">
+                    <li>My Account</li>
+                    <li>My Deals</li>
+                    <li>My Cart</li>
+                </ul>
+            </div>
+            <div>
+                <span class="footer_title">Legal</span>
+                <ul class="footer_ul">
+                    <li>Privacy Policy</li>
+                    <li>Terms & Conditions</li>
+                    <li>Review Policy & Guidelines</li>
+                </ul>
+            </div>
+            <div class="footer_contactus">
+                <span class="footer_title">Contact Us</span>
+                <a href="Contact.aspx" class="contact">
+                    <ul class="footer_ul">
+                        <li>
+                            <span id="span_contactus">Proin gravida nibh auctor aliquet amet anean sollicitudin, lorem
+              quis.
+              <br />
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;&nbsp;12 Avenue,
+            New York, NY 10160
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>&nbsp;&nbsp;&nbsp;+64 027-355-4811
+                        </li>
+                        <li>
+                            <i class="far fa-envelope-open"></i>&nbsp;&nbsp;&nbsp;hoho4811@gmail.com
+                        </li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
